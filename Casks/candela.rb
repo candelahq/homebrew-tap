@@ -20,9 +20,15 @@ cask "candela" do
   # Intel Macs can run via Rosetta 2.
   depends_on arch: :arm64
 
+  app "Candela.app"
+
   # Unsigned (ad-hoc signed) — strip quarantine so Gatekeeper doesn't block.
   # Remove this once proper Apple Developer ID signing is in place.
-  app "Candela.app", no_quarantine: true
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Candela.app"],
+                   sudo: false
+  end
 
   zap trash: [
     "~/.candela",
