@@ -7,19 +7,36 @@ Official Homebrew formulae and casks for [Candela](https://github.com/candelahq/
 ## Quick Start
 
 ```bash
-# Desktop app (macOS, system tray + traces + budgets)
-brew install --cask candelahq/tap/candela
+brew tap candelahq/tap
 
-# CLI proxy (macOS / Linux, headless)
-brew install candelahq/tap/candela-local
+# CLI — candela start, candela stop, candela status
+brew install candela
+
+# Desktop app (optional) — native macOS GUI with system tray
+brew install --cask candela-desktop
 ```
 
 ## What's Available
 
 | Name | Type | Description |
 |------|------|-------------|
-| `candela` | Cask | Candela Desktop — native macOS app with system tray, traces, costs, and budgets |
-| `candela-local` | Formula | Developer proxy — unified model routing, local observability, runtime management |
+| `candela` | Formula | CLI proxy — `candela start/stop/status/run` |
+| `candela-desktop` | Cask | Desktop app — native macOS GUI with tray, traces, budgets |
+
+## Usage
+
+```bash
+candela start          # Start proxy in background
+candela stop           # Graceful shutdown
+candela status         # Check running state
+candela run            # Run in foreground (debug)
+```
+
+Or as a login service:
+
+```bash
+brew services start candela
+```
 
 ## Requirements
 
@@ -30,15 +47,15 @@ brew install candelahq/tap/candela-local
 ## Upgrade
 
 ```bash
-brew upgrade --cask candela
-brew upgrade candela-local
+brew upgrade candela
+brew upgrade --cask candela-desktop
 ```
 
 ## Uninstall
 
 ```bash
-brew uninstall --cask candela
-brew uninstall candela-local
+brew uninstall candela
+brew uninstall --cask candela-desktop
 brew untap candelahq/tap
 ```
 
@@ -60,8 +77,8 @@ The desktop cask is built for Apple Silicon. On Intel Macs it runs under Rosetta
 
 ### Formula vs Cask?
 
-- **Cask** (`candela`) — the Desktop GUI app (`.dmg` → `/Applications`)
-- **Formula** (`candela-local`) — the CLI binary (headless proxy, works on macOS + Linux)
+- **Formula** (`candela`) — the CLI binary (headless proxy, works on macOS + Linux)
+- **Cask** (`candela-desktop`) — the Desktop GUI app (`.dmg` → `/Applications`)
 
 ## How Updates Work
 
