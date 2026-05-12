@@ -1,0 +1,42 @@
+name: Audit Casks & Formulae
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up tap symlinks
+        run: |
+          tap_dir="$(brew --repository)/Library/Taps/candelahq/homebrew-tap"
+          mkdir -p "$tap_dir"
+          [ -d Casks ]   && ln -sf "$GITHUB_WORKSPACE/Casks"   "$tap_dir/Casks"
+          [ -d Formula ] && ln -sf "$GITHUB_WORKSPACE/Formula" "$tap_dir/Formula" || true
+
+      - name: Audit casks
+        run: |
+          for cask in Casks/*.rb; do
+            name="$(basename "$cask" .rb)"
+            echo "::group::Auditing cask: $name"
+            brew audit --cask "$name"
+            echo "::endgroup::"
+          done
+
+      - name: Audit formulae
+        if: hashFiles('Formula/*.rb') != ''
+        run: |
+          for formula in Formula/*.rb; do
+            name="$(basename "$formula" .rb)"
+            echo "::group::Auditing formula: $name"
+            brew audit --formula "$name"
+            echo "::endgroup::"
+          done
+
+      - name: Ruby syntax check
+        run: ruby -c Casks/*.rb $(ls Formula/*.rb 2>/dev/null)

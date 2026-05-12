@@ -14,11 +14,15 @@ cask "candela" do
   url "https://github.com/candelahq/candela-desktop/releases/download/v#{version}/Candela-macos-arm64.dmg"
   name "Candela"
   desc "LLM observability for your machine — traces, costs, and budgets for AI dev tools"
-  homepage "https://github.com/candelahq/candela-desktop"
+  homepage "https://github.com/candelahq/candela"
 
-  # Only Apple Silicon for now (release matrix only builds arm64).
-  # Intel Macs can run via Rosetta 2.
-  depends_on arch: :arm64
+  livecheck do
+    url "https://github.com/candelahq/candela-desktop/releases/latest"
+    strategy :github_latest
+  end
+
+  # Native arm64 build. Runs on Intel Macs via Rosetta 2.
+  depends_on macos: ">= :ventura"
 
   app "Candela.app"
 
@@ -29,6 +33,12 @@ cask "candela" do
                    args: ["-cr", "#{appdir}/Candela.app"],
                    sudo: false
   end
+
+  caveats <<~EOS
+    Candela Desktop is ad-hoc signed (not yet Apple-notarized).
+    If macOS shows "app is damaged", run:
+      xattr -cr "#{appdir}/Candela.app"
+  EOS
 
   zap trash: [
     "~/.candela",
