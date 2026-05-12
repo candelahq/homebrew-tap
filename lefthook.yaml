@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    ruby-syntax:
+      glob: "**/*.rb"
+      run: ruby -c {staged_files}
