@@ -2,8 +2,7 @@
 # Auto-updated by the release workflow via the update-cask job.
 #
 # Manual install:
-#   brew tap candelahq/tap
-#   brew install --cask candela-desktop
+#   brew install --cask candelahq/tap/candela-desktop
 #
 # This file lives in candelahq/homebrew-tap → Casks/candela-desktop.rb
 
@@ -24,9 +23,8 @@ cask "candela-desktop" do
   # Native arm64 build. Runs on Intel Macs via Rosetta 2.
   depends_on macos: ">= :ventura"
 
-  # The desktop app uses the `candela` CLI to run the proxy.
-  # Installing the formula ensures `candela start/stop` is available.
-  depends_on formula: "candelahq/tap/candela"
+  # Once the `candela` CLI formula is published (via GoReleaser),
+  # users can install it separately: brew install candelahq/tap/candela
 
   app "Candela.app"
 

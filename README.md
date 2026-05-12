@@ -7,13 +7,11 @@ Official Homebrew formulae and casks for [Candela](https://github.com/candelahq/
 ## Quick Start
 
 ```bash
-brew tap candelahq/tap
-
 # CLI — candela start, candela stop, candela status
-brew install candela
+brew install candelahq/tap/candela
 
 # Desktop app (optional) — native macOS GUI with system tray
-brew install --cask candela-desktop
+brew install --cask candelahq/tap/candela-desktop
 ```
 
 ## What's Available
