@@ -7,21 +7,17 @@
 # This file lives in candelahq/homebrew-tap → Casks/candela-desktop.rb
 
 cask "candela-desktop" do
-  version "0.3.4"
-  sha256 "b7f0ae7efd79560b1b2895165b5ff5be5290624c75202a5b8e6ca8f135ab3ec5"
+  version "0.3.5"
+  sha256 "baeb40e9a9bd04f123e0ae9b767768ca37355cbcc7d9797da90a7d92e630084b"
 
   url "https://github.com/candelahq/candela-desktop/releases/download/v#{version}/Candela-macos-arm64.dmg"
   name "Candela"
   desc "LLM observability for your machine — traces, costs, and budgets for AI dev tools"
-  homepage "https://github.com/candelahq/candela"
+  homepage "https://github.com/candelahq/candela-desktop"
 
-  livecheck do
-    url "https://github.com/candelahq/candela-desktop/releases/latest"
-    strategy :github_latest
-  end
-
-  # Native arm64 build. Runs on Intel Macs via Rosetta 2.
-  depends_on macos: ">= :ventura"
+  # Only Apple Silicon for now (release matrix only builds arm64).
+  # Intel Macs can run via Rosetta 2.
+  depends_on arch: :arm64
 
   # Once the `candela` CLI formula is published (via GoReleaser),
   # users can install it separately: brew install candelahq/tap/candela
@@ -35,12 +31,6 @@ cask "candela-desktop" do
                    args: ["-cr", "#{appdir}/Candela.app"],
                    sudo: false
   end
-
-  caveats <<~EOS
-    Candela Desktop is ad-hoc signed (not yet Apple-notarized).
-    If macOS shows "app is damaged", run:
-      xattr -cr "#{appdir}/Candela.app"
-  EOS
 
   zap trash: [
     "~/.candela",
