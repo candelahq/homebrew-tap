@@ -24,12 +24,16 @@ cask "candela-desktop" do
 
   app "Candela.app"
 
-  # Unsigned (ad-hoc signed) — strip quarantine so Gatekeeper doesn't block.
-  # Remove this once proper Apple Developer ID signing is in place.
+  # Unsigned (ad-hoc signed) — strip quarantine and provenance so Gatekeeper
+  # doesn't block. macOS Sequoia adds com.apple.provenance which requires sudo
+  # to remove. Remove this once proper Apple Developer ID signing is in place.
   postflight do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/Candela.app"],
                    sudo: false
+    system_command "/usr/bin/xattr",
+                   args: ["-rd", "com.apple.provenance", "#{appdir}/Candela.app"],
+                   sudo: true
   end
 
   zap trash: [
