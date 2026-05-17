@@ -5,12 +5,12 @@
 class Candela < Formula
   desc "Local LLM observability proxy — traces, costs, and budgets for AI-powered dev tools"
   homepage "https://github.com/candelahq/candela"
-  version "0.3.1"
+  version "0.3.2"
   license "Apache-2.0"
 
   on_macos do
-    url "https://github.com/candelahq/candela/releases/download/v0.3.1/candela_0.3.1_Darwin_universal.tar.gz"
-    sha256 "a5fd4f63d104d3ac92a2a94eedaf80a8ca5324f6b076522ab2c86ba91fcd29b5"
+    url "https://github.com/candelahq/candela/releases/download/v0.3.2/candela_0.3.2_Darwin_universal.tar.gz"
+    sha256 "0b953a0099abc8c429fa977a9a59674a1e2c75676ee461c22f3f1dbfd964203b"
 
     define_method(:install) do
       bin.install "candela"
@@ -19,15 +19,15 @@ class Candela < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/candelahq/candela/releases/download/v0.3.1/candela_0.3.1_Linux_amd64.tar.gz"
-      sha256 "446583a016d459d70a6c75a0f08176a36d055cf89c5dbc3ada0db2c8a21a7a88"
+      url "https://github.com/candelahq/candela/releases/download/v0.3.2/candela_0.3.2_Linux_amd64.tar.gz"
+      sha256 "e61b0451be52ec34230d74427d70de0c8ccde92c113bdab81ba3fdb149d07773"
       define_method(:install) do
         bin.install "candela"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/candelahq/candela/releases/download/v0.3.1/candela_0.3.1_Linux_arm64.tar.gz"
-      sha256 "f977a7eba754ba499b964c60d51e61eeafbaf914688dfd3b47f9865526c32b1a"
+      url "https://github.com/candelahq/candela/releases/download/v0.3.2/candela_0.3.2_Linux_arm64.tar.gz"
+      sha256 "f869d4b707c63aa09281fa3da68550530efdab5881b66d27a9c957c239437cfc"
       define_method(:install) do
         bin.install "candela"
       end
