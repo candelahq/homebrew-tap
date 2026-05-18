@@ -59,6 +59,31 @@ brew untap candelahq/tap
 
 ## Troubleshooting
 
+### Git asks for a password during install
+
+This tap is **public** — no GitHub account or credentials are required. If `brew install` prompts for a password like:
+
+```
+Password for 'https://username@github.com':
+```
+
+Your git credential helper has a stale or expired token cached for `github.com`. Fix it with any of these:
+
+```bash
+# Option 1: Skip the prompt (works since the tap is public)
+GIT_TERMINAL_PROMPT=0 brew install candelahq/tap/candela
+
+# Option 2: Clear the cached credential
+git credential reject <<EOF
+protocol=https
+host=github.com
+EOF
+
+# Option 3: Re-authenticate with GitHub CLI
+gh auth login
+gh auth setup-git
+```
+
 ### "Candela.app is damaged and can't be opened"
 
 The desktop app is ad-hoc signed (not yet Apple-notarized). macOS quarantine may block it on first launch:
