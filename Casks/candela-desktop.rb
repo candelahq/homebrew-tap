@@ -8,7 +8,7 @@
 
 cask "candela-desktop" do
   version "0.4.5"
-  sha256 "132c11cf81e356dacf7bc2846bb039bf14b13e798078bf0441c7244720fb7d74"
+  sha256 "76f5c2fd5c3e5f49275d5a3aad5d85c9f1ae698ca63c1efc0486edbedbf7efcf"
 
   url "https://github.com/candelahq/candela-desktop/releases/download/v#{version}/Candela-macos-arm64.dmg"
   name "Candela"
