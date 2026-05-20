@@ -2,7 +2,7 @@
 
 Official Homebrew formulae and casks for [Candela](https://github.com/candelahq/candela) — the OTel-native LLM observability platform.
 
-> Trace every LLM call. Track every cent. Set budgets. All on your machine.
+> Trace every LLM call. Track every cent. Set budgets. Enforce with eBPF. All on your machine.
 
 ## Quick Start
 
@@ -16,14 +16,28 @@ brew install --cask candelahq/tap/candela-desktop
 
 ## What's Available
 
-| Name | Type | Description |
-|------|------|-------------|
-| `candela` | Formula | CLI proxy — `candela start/stop/status/run` |
-| `candela-desktop` | Cask | Desktop app — native macOS GUI with tray, traces, budgets |
+| Name | Type | Version | Description |
+|------|------|---------|-------------|
+| `candela` | Formula | 0.4.7 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
+| `candela-desktop` | Cask | 0.4.6 | Desktop app — native macOS GUI with tray, traces, budgets |
+
+## What's New in v0.4.7+
+
+- **🔑 Multi-Cloud Auth**: `candela auth login --provider gcp|aws` — native OAuth2 for GCP, SSO/access keys for AWS. No `gcloud` or `aws` CLI dependency.
+- **🛡️ eBPF Enforcement**: Kernel-level security ensures all LLM API calls are captured — Tetragon process enforcement + iptables transparent proxy.
+- **📊 Phase A Observability Hardening**: Circuit breaker, fuzz tests, runtime coverage.
+- **🤖 Expanded Models**: Gemini 3.5 Flash, Opus 4.7, Sonnet 4.6, Haiku 4.5, Gemini 3.0 Pro.
+- **🔧 Tetragon gRPC Audit**: MultiSink pipeline with graceful shutdown and hardened error handling.
+- **🖥️ Desktop Refactor**: User-scoped observability, models page, and settings overhaul.
 
 ## Usage
 
 ```bash
+# Authenticate (no gcloud/aws CLI required)
+candela auth login                 # GCP OAuth2 (default)
+candela auth login --provider aws  # AWS SSO
+
+# Proxy management
 candela start          # Start proxy in background
 candela stop           # Graceful shutdown
 candela status         # Check running state
@@ -112,7 +126,7 @@ The desktop cask is built for Apple Silicon. On Intel Macs it runs under Rosetta
 
 - 🕯️ [Candela](https://github.com/candelahq/candela) — main monorepo
 - 🖥️ [Candela Desktop](https://github.com/candelahq/candela-desktop) — Flutter desktop app
-- 📚 [Documentation](https://github.com/candelahq/candela/tree/main/docs)
+- 📚 [Documentation](https://candelahq.com)
 - 🐛 [Report an issue](https://github.com/candelahq/candela/issues)
 
 ## License
