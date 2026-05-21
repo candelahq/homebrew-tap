@@ -18,8 +18,8 @@ brew install --cask candelahq/tap/candela-desktop
 
 | Name | Type | Version | Description |
 |------|------|---------|-------------|
-| `candela` | Formula | 0.4.7 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
-| `candela-desktop` | Cask | 0.4.6 | Desktop app — native macOS GUI with tray, traces, budgets |
+| `candela` | Formula | 0.5.1 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
+| `candela-desktop` | Cask | 0.5.0 | Desktop app — native macOS GUI with tray, traces, budgets |
 
 ## What's New in v0.4.7+
 
@@ -28,7 +28,7 @@ brew install --cask candelahq/tap/candela-desktop
 - **📊 Phase A Observability Hardening**: Circuit breaker, fuzz tests, runtime coverage.
 - **🤖 Expanded Models**: Gemini 3.5 Flash, Opus 4.7, Sonnet 4.6, Haiku 4.5, Gemini 3.0 Pro.
 - **🔧 Tetragon gRPC Audit**: MultiSink pipeline with graceful shutdown and hardened error handling.
-- **🖥️ Desktop Refactor**: User-scoped observability, models page, and settings overhaul.
+- **🖥️ Desktop v0.5.0**: Riverpod 3.x `DashboardController` migration, native ADC auth (no gcloud dependency), model pricing UI, and user-scoped admin dashboard.
 
 ## Usage
 
