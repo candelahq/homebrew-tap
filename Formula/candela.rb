@@ -5,7 +5,6 @@
 class Candela < Formula
   desc "Local LLM observability proxy — traces, costs, and budgets for AI-powered dev tools"
   homepage "https://github.com/candelahq/candela"
-  version "0.5.2"
   license "Apache-2.0"
 
   on_macos do
