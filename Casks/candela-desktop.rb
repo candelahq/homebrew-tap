@@ -7,8 +7,8 @@
 # This file lives in candelahq/homebrew-tap → Casks/candela-desktop.rb
 
 cask "candela-desktop" do
-  version "0.5.5"
-  sha256 "2b81ced6077dfd1091d29aeefc416ceaae9dca36be77abbf68bea1174f3a2853"
+  version "0.5.6"
+  sha256 "9f1881800b212e2e9ca560934e959fa83bd632eef504f85b4d1dae5b2b49fbb6"
 
   url "https://github.com/candelahq/candela-desktop/releases/download/v#{version}/Candela-macos-arm64.dmg"
   name "Candela"
