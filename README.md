@@ -53,7 +53,7 @@ brew services start candela
 ## Requirements
 
 - **macOS 13+** (Ventura or later recommended)
-- **Apple Silicon** (M1/M2/M3/M4) — Intel Macs run via Rosetta 2
+- **Apple Silicon** (M1/M2/M3/M4) required for the Desktop app. The CLI runs natively on both Apple Silicon and Intel Macs.
 - [Homebrew](https://brew.sh) 4.0+
 
 ## Upgrade
@@ -110,7 +110,7 @@ The cask's `postflight` hook runs this automatically, but manual downloads or re
 
 ### Intel Mac
 
-The desktop cask is built for Apple Silicon. On Intel Macs it runs under Rosetta 2 — no extra steps needed.
+The desktop cask (`candela-desktop`) is built exclusively for Apple Silicon and is not supported on Intel Macs. However, the CLI formula (`candela`) is a universal binary and runs natively on both Intel and Apple Silicon Macs.
 
 ### Formula vs Cask?
 
