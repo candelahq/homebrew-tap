@@ -18,17 +18,19 @@ brew install --cask candelahq/tap/candela-desktop
 
 | Name | Type | Version | Description |
 |------|------|---------|-------------|
-| `candela` | Formula | 0.5.1 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
-| `candela-desktop` | Cask | 0.5.0 | Desktop app — native macOS GUI with tray, traces, budgets |
+| `candela` | Formula | 0.8.1 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
+| `candela-desktop` | Cask | 0.7.1 | Desktop app — native macOS GUI with tray, traces, budgets |
 
-## What's New in v0.4.7+
+## What's New (v0.5.7 → v0.8.1)
 
-- **🔑 Multi-Cloud Auth**: `candela auth login --provider gcp|aws` — native OAuth2 for GCP, SSO/access keys for AWS. No `gcloud` or `aws` CLI dependency.
-- **🛡️ eBPF Enforcement**: Kernel-level security ensures all LLM API calls are captured — Tetragon process enforcement + iptables transparent proxy.
-- **📊 Phase A Observability Hardening**: Circuit breaker, fuzz tests, runtime coverage.
-- **🤖 Expanded Models**: Gemini 3.5 Flash, Opus 4.7, Sonnet 4.6, Haiku 4.5, Gemini 3.0 Pro.
-- **🔧 Tetragon gRPC Audit**: MultiSink pipeline with graceful shutdown and hardened error handling.
-- **🖥️ Desktop v0.5.0**: Riverpod 3.x `DashboardController` migration, native ADC auth (no gcloud dependency), model pricing UI, and user-scoped admin dashboard.
+- **💰 Pricing Engine Overhaul**: Model costs are now driven by an external `pricing.yaml`; hot-reload without restarting the proxy.
+- **🤖 Model Allowlist & Policy Gate**: Restrict which models users can call via config-driven allowlists and deny rules.
+- **💳 Billing Interface Extraction**: Billing logic is decoupled into its own service interface, ready for custom backends.
+- **🌐 Budget Timezone Support**: Per-budget timezone field — daily/monthly resets honour the configured timezone instead of UTC.
+- **🔒 Security Hardening (v0.7.1)**: TLS cert rotation, stricter CSP headers, and hardened cookie flags for the admin UI.
+- **🔧 New Env Vars**: `CANDELA_VERTEX_REGION`, `CANDELA_BILLING_BACKEND`, `CANDELA_PRICING_PATH` for finer-grained runtime control.
+- **🖥️ Add Model UI**: Admin dashboard now exposes an "Add Model" form for registering custom or fine-tuned models.
+- **👥 Users Pagination & Status Filter**: User list in the admin UI supports server-side pagination and active/suspended status filtering.
 
 ## Usage
 
