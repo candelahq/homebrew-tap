@@ -21,7 +21,7 @@ brew install --cask candelahq/tap/candela-desktop
 | `candela` | Formula | 0.8.1 | CLI proxy — `candela start/stop/status/run` + multi-cloud auth |
 | `candela-desktop` | Cask | 0.7.1 | Desktop app — native macOS GUI with tray, traces, budgets |
 
-## What's New (v0.5.7 → v0.7.1)
+## What's New (v0.5.7 → v0.8.1)
 
 - **💰 Pricing Engine Overhaul**: Model costs are now driven by an external `pricing.yaml`; hot-reload without restarting the proxy.
 - **🤖 Model Allowlist & Policy Gate**: Restrict which models users can call via config-driven allowlists and deny rules.
