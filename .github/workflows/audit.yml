@@ -9,8 +9,12 @@ on:
 jobs:
   audit:
     runs-on: macos-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up tap symlinks
         run: |
