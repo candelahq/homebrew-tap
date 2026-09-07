@@ -40,13 +40,13 @@ class Candela < Formula
         cat > ~/.config/candela/config.yaml <<EOF
         port: 8181
         providers:
-- name: google
-  models: ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-3.5-flash"]
-- name: anthropic
-  models: ["claude-sonnet-4-20250514"]
+          - name: google
+            models: ["gemini-2.5-pro", "gemini-2.5-flash", "gemini-3.5-flash"]
+          - name: anthropic
+            models: ["claude-sonnet-4-20250514"]
         vertex_ai:
-project: YOUR_GCP_PROJECT
-region: us-central1
+          project: YOUR_GCP_PROJECT
+          region: us-central1
         EOF
 
       Authenticate (no gcloud required):
