@@ -16,11 +16,12 @@ cask "candela-desktop" do
   homepage "https://github.com/candelahq/candela-desktop"
 
   # Only Apple Silicon for now (release matrix only builds arm64).
-  # Intel Macs can run via Rosetta 2.
+  # Intel Macs are not supported for the desktop app.
   depends_on arch: :arm64
-
   # Once the `candela` CLI formula is published (via GoReleaser),
   # users can install it separately: brew install candelahq/tap/candela
+
+  depends_on :macos
 
   app "Candela.app"
 
